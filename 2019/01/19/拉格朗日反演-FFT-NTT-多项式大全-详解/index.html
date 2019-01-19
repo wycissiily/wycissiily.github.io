@@ -5,15 +5,27 @@
   
 
   
-  <title>Hexo</title>
+  <title>[拉格朗日反演][FFT][NTT][多项式大全]详解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://eztjy.ml/index.html">
+  <meta name="description" content="#1、多项式的两种表示法 ##1.系数表示法我们最常用的多项式表示法就是系数表示法，一个次数界为$n$的多项式$S(x)$可以用一个向量$s=(s_0,s_1,s_2,\cdots,s_n-1)$系数表示如下：$$S(x)=\sum_{k=0}^{n-1}s_kx^k$$ 系数表示法很适合做加法，可以在$O(n)$的时间复杂度内完成，表达式为：$$S(x)=A(x)+B(x)=\sum_{k=0}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[拉格朗日反演][FFT][NTT][多项式大全]详解">
+<meta property="og:url" content="http://eztjy.ml/2019/01/19/拉格朗日反演-FFT-NTT-多项式大全-详解/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#1、多项式的两种表示法 ##1.系数表示法我们最常用的多项式表示法就是系数表示法，一个次数界为$n$的多项式$S(x)$可以用一个向量$s=(s_0,s_1,s_2,\cdots,s_n-1)$系数表示如下：$$S(x)=\sum_{k=0}^{n-1}s_kx^k$$ 系数表示法很适合做加法，可以在$O(n)$的时间复杂度内完成，表达式为：$$S(x)=A(x)+B(x)=\sum_{k=0}">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdn.net/20180505211152335?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0VaX1RKWQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180506122458230?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0VaX1RKWQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180505212817759?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0VaX1RKWQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180506105100660?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0VaX1RKWQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180506113941633?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0VaX1RKWQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901201507165?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZXpfeXd3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://img-blog.csdn.net/20180723211153506?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0VaX1RKWQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2019-01-19T11:54:54.692Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="[拉格朗日反演][FFT][NTT][多项式大全]详解">
+<meta name="twitter:description" content="#1、多项式的两种表示法 ##1.系数表示法我们最常用的多项式表示法就是系数表示法，一个次数界为$n$的多项式$S(x)$可以用一个向量$s=(s_0,s_1,s_2,\cdots,s_n-1)$系数表示如下：$$S(x)=\sum_{k=0}^{n-1}s_kx^k$$ 系数表示法很适合做加法，可以在$O(n)$的时间复杂度内完成，表达式为：$$S(x)=A(x)+B(x)=\sum_{k=0}">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180505211152335?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0VaX1RKWQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,9 +72,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-拉格朗日反演-FFT-NTT-多项式大全-详解" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-拉格朗日反演-FFT-NTT-多项式大全-详解" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/19/拉格朗日反演-FFT-NTT-多项式大全-详解/" class="article-date">
   <time datetime="2019-01-19T11:53:45.000Z" itemprop="datePublished">2019-01-19</time>
@@ -75,8 +85,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/19/拉格朗日反演-FFT-NTT-多项式大全-详解/">[拉格朗日反演][FFT][NTT][多项式大全]详解</a>
+    <h1 class="article-title" itemprop="name">
+      [拉格朗日反演][FFT][NTT][多项式大全]详解
     </h1>
   
 
@@ -450,56 +460,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/18/hello-world/" class="article-date">
-  <time datetime="2019-01-18T07:58:04.144Z" itemprop="datePublished">2019-01-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/18/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2019/01/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://eztjy.ml/2019/01/18/hello-world/" data-id="cjr3f1u6100002ou4cfh1v2gn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
